@@ -1,0 +1,19 @@
+{
+  "name": "drivertracker",
+  "version": "1.0.0",
+  "description": "Nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fatemagnassar/TrackingSystem.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fatemagnassar/TrackingSystem/issues"
+  },
+  "homepage": "https://github.com/fatemagnassar/TrackingSystem#readme"
+}
