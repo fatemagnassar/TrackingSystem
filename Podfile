@@ -9,8 +9,8 @@ target 'DriverTracker' do
 
 pod 'Alamofire', '~> 4.7'
 pod 'SCLAlertView'
-pod "SwiftSpinner"
+pod 'SwiftSpinner'
 pod 'Firebase/Core'
 pod 'Firebase/Database'
-
+pod 'BRYXBanner'
 end

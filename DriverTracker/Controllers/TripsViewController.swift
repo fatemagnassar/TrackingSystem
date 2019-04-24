@@ -43,7 +43,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     fileprivate func currenttrips()
     {
-        Networking.sharetInstance.retrieveTrips(id: Singleton.sharedInstance.loggedInDriver!.id, required: .notStarted) { (valid, msg, trips) in
+        Networking.sharetInstance.retrieveTrips(id: Singleton.sharedInstance.loggedInDriver!.id, required: .notstarted) { (valid, msg, trips) in
             SwiftSpinner.hide()
             if valid{
                 self.shownTrips=trips
@@ -56,7 +56,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myCell = tripstbl.dequeueReusableCell(withIdentifier: "TripCell", for: indexPath)
-        myCell.textLabel?.text = shownTrips[indexPath.row].destination_region_name
+        myCell.textLabel?.text = shownTrips[indexPath.row].trip_name
 
         return myCell    }
     

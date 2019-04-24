@@ -18,7 +18,8 @@ class Trips: Decodable{
     var state: String
     var date_time: String
     var estimated_time: String
-    //var address: String
+    var to_address: String
+    var from_address: String
     var vehicle_name : String
     var region_name : String
     var city_name : String
@@ -29,13 +30,16 @@ class Trips: Decodable{
     var city_id : Int
     var destination_region_id : Int
     var destination_city_id : Int
+    var trip_name : String
     
-    //init(id: Int, start_lat: String,start_long: String, end_lat: String,end_long: String, state: String , date_time: String, estimated_time: String , address:String , vehicle_name : String ,region_name : String , city_name : String ,destination_region_name : String , destination_city_name : String , driver_id : Int,vehicle_id : String ,region_id : String ,city_id : String,destination_region_id : String,destination_city_id : String) {
-    init(id: Int, start_lat: String,start_long: String, end_lat: String,end_long: String, state: String , date_time: String, estimated_time: String  , vehicle_name : String ,region_name : String , city_name : String ,destination_region_name : String , destination_city_name : String , driver_id : Int,vehicle_id : Int ,region_id : Int ,city_id : intmax_t,destination_region_id : Int,destination_city_id : Int) {
 
+    init(id: Int, start_lat: String,start_long: String, end_lat: String,end_long: String, state: String , date_time: String, estimated_time: String ,to_address:String ,from_address:String , vehicle_name : String ,region_name : String , city_name : String ,destination_region_name : String , destination_city_name : String , driver_id : Int,vehicle_id : Int ,region_id : Int ,city_id : Int,destination_region_id : Int,destination_city_id : Int,trip_name:String) {
+    //init(id: Int, start_lat: String,start_long: String, end_lat: String,end_long: String, state: String , date_time: String, estimated_time: String  , vehicle_name : String ,region_name : String , city_name : String ,destination_region_name : String , destination_city_name : String , driver_id : Int,vehicle_id : Int ,region_id : Int ,city_id : intmax_t,destination_region_id : Int,destination_city_id : Int) {
+        self.trip_name = trip_name
         self.id = id
         self.driver_id = driver_id
-        //self.address = address
+        self.to_address = to_address
+        self.from_address=from_address
         self.start_lat = start_lat
         self.start_long = start_long
         self.end_lat = end_lat
@@ -45,6 +49,11 @@ class Trips: Decodable{
             {self.state = "Not Started"}
         else if state=="completed"{
             self.state = "Completed"}
+        else if state=="notStarted"{
+            self.state = "Not Started"}
+        else if state=="finished"{
+            self.state = "Finished"}
+            
         else{
             self.state=state
         }

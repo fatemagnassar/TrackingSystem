@@ -11,7 +11,7 @@ import Alamofire
 
 extension Networking{
     func login(username: String, password: String, completed: @escaping (_ valid:Bool, _ msg:String)->()){
-        let url = "\(Singleton.sharedInstance.serverBasePath)/login"
+        let url = "\(Singleton.sharedInstance.serverBasePath)/login/driver"
         let parameters: Parameters = [
             "user_name" : username,
             "password" : password,

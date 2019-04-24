@@ -11,8 +11,13 @@ import Alamofire
 
 enum TripState: String {
     case completed = "completed"
-    case notStarted = "notstarted"
+    case notstarted = "notstarted"
     case inprogress = "inprogress"
+    case notStarted = "notStarted"
+    case finished = "finished"
+
+
+
 }
 
 extension Networking{
@@ -50,10 +55,10 @@ extension Networking{
     
     
     func updateTripStatus(id:Int, status: String, completed: @escaping (_ valid:Bool, _ msg:String)->()){
-        let url = "\(Singleton.sharedInstance.serverBasePath)/UpdateTripStatus"
+        let url = "\(Singleton.sharedInstance.serverBasePath)/changestate"
         let parameters: Parameters = [
             "id": id ,
-            "status": status
+            "state": status
         ]
         let headers: HTTPHeaders = [
             "Accept": "application/json"
@@ -64,9 +69,11 @@ extension Networking{
         if let jsonResponse = response.result.value{
         let data = jsonResponse as! [String : Any]
         let valid = data["valid"] as! Bool
+
+
         if valid{
-        
-        completed(true,data["message"] as! String)
+            completed(true,"Update Successful")
+
         return
         
         }
@@ -83,4 +90,35 @@ extension Networking{
         
         
     }
+    func getTrip(id:Int, completed: @escaping (_ valid:Bool, _ msg:String, _ trip:Trips?)->()) {
+        let url = "\(Singleton.sharedInstance.serverBasePath)/tripsinfo"
+        let parameters: Parameters = [
+            "id": id ,
+        ]
+        let headers: HTTPHeaders = [
+            "Accept": "application/json"
+            
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+            guard let repsonseDict = response.result.value as? [String: Any] else { return }
+            guard let valid = repsonseDict["valid"] as? Bool else { return }
+            if valid {
+                guard let tripArr = repsonseDict["data"] as? [[String : Any]] else { return }
+                var trips: [Trips] = [Trips]()
+                for trip in tripArr {
+                    if let theJSONData = try? JSONSerialization.data(withJSONObject: trip,options: []) {
+                        guard let tripModel = try? JSONDecoder().decode(Trips.self, from: theJSONData)  else {
+                            completed(false, "Unexpected Error Please Try Again In A While ",nil)
+                            return
+                        }
+                        trips.append(tripModel)
+                    }
+                }
+                completed(true, "Retrieved Data Successfully", trips[0])
+            }
+        }
+
+    }
 }
+

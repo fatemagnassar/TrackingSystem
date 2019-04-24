@@ -13,23 +13,59 @@ import Firebase
 import FirebaseDatabase
 import SwiftSpinner
 import SCLAlertView
+import BRYXBanner
 
-class MapViewController: UIViewController , CLLocationManagerDelegate{
+enum GeofenceType {
+    case line
+    case polygon
+    case circle
+}
+struct Geofence {
+    var points: [CLLocationCoordinate2D]
+    var type: GeofenceType
+    var radius: CLLocationDistance
+    var center: CLLocationCoordinate2D
+    
+    static func loadDummyGeofences() -> [Geofence] {
+        let poly = Geofence(points: [CLLocationCoordinate2DMake(49.142677,  -123.135139),CLLocationCoordinate2DMake(49.142730, -123.125794),CLLocationCoordinate2DMake(49.140874, -123.125805),CLLocationCoordinate2DMake(49.140885, -123.135214)], type: .polygon, radius: 0, center: CLLocationCoordinate2DMake(0,0))
+
+        let line = Geofence(points: [CLLocationCoordinate2DMake(49.142677,  -123.135139),CLLocationCoordinate2DMake(49.142730, -123.125794),CLLocationCoordinate2DMake(49.140874, -123.125805)], type: .line, radius: 0, center: CLLocationCoordinate2DMake(0,0))
+        
+        let circle = Geofence(points: [], type: .circle, radius: CLLocationDistance(exactly: 1000)!, center: CLLocationCoordinate2DMake(49.142677,  -123.135139))
+        
+        return [poly, line, circle]
+    }
+}
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     var tripSelected: Trips!
+    var banner : Banner?
     var ref: DatabaseReference!
     @IBOutlet weak var myMap: MKMapView!
+    @IBOutlet weak var maxSpeedLabel: UILabel!
     var locationManager: CLLocationManager!
     var currentLocation: CLLocationCoordinate2D!
-
+    var geofences: [Geofence] = Geofence.loadDummyGeofences()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocation()
         mapSetup()
+        for geofence in geofences {
+            if geofence.type == .circle {
+                addCircle(center: geofence.center, radius: geofence.radius)
+            } else {
+                addOverLay(points: geofence.points)
+            }
+        }
+        maxSpeedLabel.text = "100"
         ref = Database.database().reference()
-        let annotation = MKPointAnnotation()
-        annotation.title = "Destination"
-        annotation.coordinate = CLLocationCoordinate2D(latitude: Double( tripSelected.end_lat)!, longitude:Double(tripSelected.end_long)!)
-        myMap.addAnnotation(annotation)
+        let annotationdest = MKPointAnnotation()
+        annotationdest.title = "Your Destination"
+        //annotationdest.coordinate = CLLocationCoordinate2D(latitude: Double( tripSelected.end_lat)!, longitude:Double(tripSelected.end_long)!)
+        myMap.addAnnotation(annotationdest)
+        let annotationstart = MKPointAnnotation()
+        annotationstart.title = "Your Pickup"
+        //annotationstart.coordinate = CLLocationCoordinate2D(latitude: Double( tripSelected.start_lat)!, longitude:Double(tripSelected.start_long)!)
+        myMap.addAnnotation(annotationstart)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,37 +88,114 @@ class MapViewController: UIViewController , CLLocationManagerDelegate{
         myMap.showsUserLocation = true
         myMap.mapType = MKMapType.standard
         myMap.userTrackingMode = MKUserTrackingMode.followWithHeading
-        
+        myMap.delegate = self
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(locations[0].coordinate)
-        myMap.centerCoordinate = locations[0].coordinate
+        centerMapOnLocation(location: locations[0])
         print(locations[0].coordinate)
         currentLocation = locations[0].coordinate
-        self.ref.child("users").child(Singleton.sharedInstance.loggedInDriver.first_name).setValue(["Name":
-            Singleton.sharedInstance.loggedInDriver.first_name,"lat":currentLocation.latitude,"lon":currentLocation.longitude])
-
+        var violation = false
+        for geofence in geofences {
+            if geofence.type == .circle {
+                let circleRenderer = MKCircleRenderer(circle: MKCircle(center: geofence.center, radius: geofence.radius))
+                let mapPoint: MKMapPoint = MKMapPoint(currentLocation)
+                let circleViewPoint: CGPoint = circleRenderer.point(for: mapPoint)
+                if circleRenderer.path.contains(circleViewPoint) {
+                   showBanner()
+                    violation = true
+                }
+            } else {
+                let polygonRenderer = MKPolygonRenderer(polygon: MKPolygon(coordinates: geofence.points, count: geofence.points.count))
+                let mapPoint: MKMapPoint = MKMapPoint(currentLocation)
+                let polygonViewPoint: CGPoint = polygonRenderer.point(for: mapPoint)
+                if polygonRenderer.path.contains(polygonViewPoint) {
+                    showBanner()
+                    violation = true
+                }
+            }
+        }
+        if !violation {
+            hideBanner()
+        }
+//        self.ref.child("users").child(Singleton.sharedInstance.loggedInDriver.first_name).setValue(["Name":
+//            Singleton.sharedInstance.loggedInDriver.first_name,"lat":currentLocation.latitude,"lon":currentLocation.longitude])]
+    }
+    
+    func showBanner() {
+        banner?.dismiss()
+        banner = Banner(title: "Warning", subtitle: "You have entered a restricted area", backgroundColor: UIColor(red:1, green:0, blue:0, alpha:1))
+        banner?.dismissesOnTap = false
+        banner?.show()
+    }
+    
+    func hideBanner() {
+        banner?.dismiss()
     }
     
 
     @IBAction func endTrip(_ sender: Any) {
 
-        Networking.sharetInstance.updateTripStatus(id: tripSelected.id, status: TripState.completed.rawValue) { (valid, msg) in
+        Networking.sharetInstance.updateTripStatus(id: tripSelected.id, status: TripState.finished.rawValue) { (valid, msg) in
             SwiftSpinner.hide()
             if valid{
                 self.locationManager.stopUpdatingLocation()
                 self.locationManager.stopUpdatingHeading()
                 self.dismiss(animated: true, completion: nil)
-
+                Singleton.sharedInstance.flag=1
             }else{
                 SCLAlertView().showError("Error", subTitle: msg)
             }
         }
         
     }
-
+    func addOverLay(points: [CLLocationCoordinate2D])
+    {
+        let overlay = MKPolygon(coordinates: points, count: points.count)
+        myMap.addOverlay(overlay)
+    }
+    
+    func addCircle(center: CLLocationCoordinate2D, radius: CLLocationDistance) {
+        let circle = MKCircle(center: center, radius: radius)
+        myMap.addOverlay(circle)
+    }
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
+                                                  latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
+        myMap.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolygon {
+            let polygonView = MKPolygonRenderer(overlay: overlay)
+            polygonView.strokeColor = UIColor.blue
+            
+            return polygonView
+        }
+        if overlay is MKPolyline {
+            let lineView = MKPolylineRenderer(overlay: overlay)
+            lineView.strokeColor = UIColor.blue
+            return lineView
+        }
+        if overlay is MKCircle {
+            let circleView = MKCircleRenderer(overlay: overlay)
+            circleView.strokeColor = UIColor.blue
+            circleView.lineWidth = 1
+            circleView.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.3)
+            return circleView
+        }
+        return MKOverlayRenderer()
+        
+    }
 }
+
+
+
+
+
 
 
 

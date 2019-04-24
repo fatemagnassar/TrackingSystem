@@ -14,13 +14,31 @@
 		8B187497225E2FB500DCC43C /* TripsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B187496225E2FB500DCC43C /* TripsDetailsViewController.swift */; };
 		8B187499225E3F5100DCC43C /* 57390193_2543763952319586_4319025795826712576_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B187498225E3F5100DCC43C /* 57390193_2543763952319586_4319025795826712576_n.png */; };
 		8B18749B225E9F6100DCC43C /* user-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B18749A225E9F6100DCC43C /* user-512.png */; };
-		8B18749D225EB08000DCC43C /* home_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B18749C225EB07F00DCC43C /* home_01.jpg */; };
 		8B1874A3225F96D100DCC43C /* violation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1874A2225F96D000DCC43C /* violation.png */; };
 		8B1874A5225F96F700DCC43C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1874A4225F96F700DCC43C /* MapViewController.swift */; };
 		8B20021822428C7800F766C1 /* PasswordEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20021722428C7800F766C1 /* PasswordEditViewController.swift */; };
 		8B26F44221F37F9F0011E7AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B26F44121F37F9F0011E7AC /* GoogleService-Info.plist */; };
 		8B535FA3225CDC8100D7353D /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B535FA2225CDC8100D7353D /* route.png */; };
 		8B535FA5225CDDFF00D7353D /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B535FA4225CDDFF00D7353D /* TripsViewController.swift */; };
+		8B5C86432266781600FE4DB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B5C86412266781600FE4DB2 /* Main.storyboard */; };
+		8B5C86452266959500FE4DB2 /* d5b0ad849d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5C86442266959500FE4DB2 /* d5b0ad849d.png */; };
+		8B5C86472266962B00FE4DB2 /* warning1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5C86462266962B00FE4DB2 /* warning1.png */; };
+		8B5C86492267522900FE4DB2 /* no.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5C86482267522900FE4DB2 /* no.png */; };
+		8B5C864B226752AB00FE4DB2 /* noicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5C864A226752AB00FE4DB2 /* noicon.png */; };
+		8B5C864F2267C17A00FE4DB2 /* geofences.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5C864E2267C17A00FE4DB2 /* geofences.png */; };
+		8B5C86512267C1C500FE4DB2 /* RestrictionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5C86502267C1C500FE4DB2 /* RestrictionsViewController.swift */; };
+		8B5C86532267CC7200FE4DB2 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5C86522267CC7200FE4DB2 /* GroupsViewController.swift */; };
+		8B5C86552267CE3900FE4DB2 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5C86542267CE3900FE4DB2 /* Group.swift */; };
+		8B5C86572267D3C400FE4DB2 /* RestrictionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5C86562267D3C400FE4DB2 /* RestrictionDetailsViewController.swift */; };
+		8B5C86592269300C00FE4DB2 /* pnggeo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B5C86582269300B00FE4DB2 /* pnggeo.jpg */; };
+		8B5C865B2269E34800FE4DB2 /* GroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5C865A2269E34800FE4DB2 /* GroupService.swift */; };
+		8B70F4AE227113DB0089615E /* speedLimit.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B70F4AD227113DB0089615E /* speedLimit.png */; };
+		8B7584CD2264A69F00DCEB98 /* Violation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7584CC2264A69F00DCEB98 /* Violation.swift */; };
+		8B7584CF2264A82500DCEB98 /* Restriction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7584CE2264A82500DCEB98 /* Restriction.swift */; };
+		8B7584D12264A98800DCEB98 /* ViolationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7584D02264A98800DCEB98 /* ViolationService.swift */; };
+		8B7584D32264A99900DCEB98 /* RestrictionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7584D22264A99900DCEB98 /* RestrictionService.swift */; };
+		8B7584D52264B27F00DCEB98 /* ViolationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7584D42264B27F00DCEB98 /* ViolationViewController.swift */; };
+		8B7584D92264B6BE00DCEB98 /* ViolationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7584D82264B6BE00DCEB98 /* ViolationDetailsViewController.swift */; };
 		8B77DB042245982100728801 /* Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B77DB032245982100728801 /* Trips.swift */; };
 		8B9EB33721B18AB1003210CE /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9EB33621B18AB1003210CE /* Singleton.swift */; };
 		8B9EB33921B195DD003210CE /* DriverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9EB33821B195DD003210CE /* DriverService.swift */; };
@@ -28,7 +46,6 @@
 		8B9EB33D21B1988C003210CE /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9EB33C21B1988C003210CE /* Driver.swift */; };
 		8BB9410721A48CD1001F01E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB9410621A48CD1001F01E2 /* AppDelegate.swift */; };
 		8BB9410921A48CD1001F01E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB9410821A48CD1001F01E2 /* ViewController.swift */; };
-		8BB9410C21A48CD1001F01E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB9410A21A48CD1001F01E2 /* Main.storyboard */; };
 		8BB9410E21A48CD4001F01E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB9410D21A48CD4001F01E2 /* Assets.xcassets */; };
 		8BB9411121A48CD4001F01E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB9410F21A48CD4001F01E2 /* LaunchScreen.storyboard */; };
 		8BE1AEE2224005AD00A9420D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE1AEE1224005AD00A9420D /* ProfileViewController.swift */; };
@@ -50,13 +67,31 @@
 		8B187496225E2FB500DCC43C /* TripsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsDetailsViewController.swift; sourceTree = "<group>"; };
 		8B187498225E3F5100DCC43C /* 57390193_2543763952319586_4319025795826712576_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57390193_2543763952319586_4319025795826712576_n.png; sourceTree = "<group>"; };
 		8B18749A225E9F6100DCC43C /* user-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-512.png"; sourceTree = "<group>"; };
-		8B18749C225EB07F00DCC43C /* home_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = home_01.jpg; sourceTree = "<group>"; };
 		8B1874A2225F96D000DCC43C /* violation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = violation.png; sourceTree = "<group>"; };
 		8B1874A4225F96F700DCC43C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8B20021722428C7800F766C1 /* PasswordEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditViewController.swift; sourceTree = "<group>"; };
 		8B26F44121F37F9F0011E7AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B535FA2225CDC8100D7353D /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route.png; sourceTree = "<group>"; };
 		8B535FA4225CDDFF00D7353D /* TripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
+		8B5C86422266781600FE4DB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8B5C86442266959500FE4DB2 /* d5b0ad849d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = d5b0ad849d.png; sourceTree = "<group>"; };
+		8B5C86462266962B00FE4DB2 /* warning1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning1.png; sourceTree = "<group>"; };
+		8B5C86482267522900FE4DB2 /* no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no.png; sourceTree = "<group>"; };
+		8B5C864A226752AB00FE4DB2 /* noicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noicon.png; sourceTree = "<group>"; };
+		8B5C864E2267C17A00FE4DB2 /* geofences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = geofences.png; sourceTree = "<group>"; };
+		8B5C86502267C1C500FE4DB2 /* RestrictionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionsViewController.swift; sourceTree = "<group>"; };
+		8B5C86522267CC7200FE4DB2 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		8B5C86542267CE3900FE4DB2 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		8B5C86562267D3C400FE4DB2 /* RestrictionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewController.swift; sourceTree = "<group>"; };
+		8B5C86582269300B00FE4DB2 /* pnggeo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pnggeo.jpg; sourceTree = "<group>"; };
+		8B5C865A2269E34800FE4DB2 /* GroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
+		8B70F4AD227113DB0089615E /* speedLimit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speedLimit.png; sourceTree = "<group>"; };
+		8B7584CC2264A69F00DCEB98 /* Violation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Violation.swift; sourceTree = "<group>"; };
+		8B7584CE2264A82500DCEB98 /* Restriction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restriction.swift; sourceTree = "<group>"; };
+		8B7584D02264A98800DCEB98 /* ViolationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationService.swift; sourceTree = "<group>"; };
+		8B7584D22264A99900DCEB98 /* RestrictionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionService.swift; sourceTree = "<group>"; };
+		8B7584D42264B27F00DCEB98 /* ViolationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationViewController.swift; sourceTree = "<group>"; };
+		8B7584D82264B6BE00DCEB98 /* ViolationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationDetailsViewController.swift; sourceTree = "<group>"; };
 		8B77DB032245982100728801 /* Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trips.swift; sourceTree = "<group>"; };
 		8B9EB33621B18AB1003210CE /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		8B9EB33821B195DD003210CE /* DriverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverService.swift; sourceTree = "<group>"; };
@@ -65,7 +100,6 @@
 		8BB9410321A48CD1001F01E2 /* DriverTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DriverTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB9410621A48CD1001F01E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BB9410821A48CD1001F01E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8BB9410B21A48CD1001F01E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BB9410D21A48CD4001F01E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BB9411021A48CD4001F01E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BB9411221A48CD4001F01E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,11 +148,17 @@
 				8B535FA2225CDC8100D7353D /* route.png */,
 				8BE1AEE4224010B000A9420D /* maps.png */,
 				8B06543F2260C1E700E10559 /* tripsdetails.png */,
-				8B18749C225EB07F00DCC43C /* home_01.jpg */,
+				8B5C86582269300B00FE4DB2 /* pnggeo.jpg */,
+				8B5C86462266962B00FE4DB2 /* warning1.png */,
+				8B5C864A226752AB00FE4DB2 /* noicon.png */,
+				8B5C864E2267C17A00FE4DB2 /* geofences.png */,
+				8B5C86482267522900FE4DB2 /* no.png */,
 				8B1874A2225F96D000DCC43C /* violation.png */,
 				8BE1AEE3224010AF00A9420D /* profileAvatar.png */,
 				8B18749A225E9F6100DCC43C /* user-512.png */,
+				8B5C86442266959500FE4DB2 /* d5b0ad849d.png */,
 				8BE1AEE5224010B000A9420D /* profileIcon.png */,
+				8B70F4AD227113DB0089615E /* speedLimit.png */,
 				8B11C21221B8562A00AC5D12 /* logo.png */,
 			);
 			path = Assets;
@@ -136,6 +176,11 @@
 				8B535FA4225CDDFF00D7353D /* TripsViewController.swift */,
 				8B187496225E2FB500DCC43C /* TripsDetailsViewController.swift */,
 				8B1874A4225F96F700DCC43C /* MapViewController.swift */,
+				8B7584D42264B27F00DCEB98 /* ViolationViewController.swift */,
+				8B7584D82264B6BE00DCEB98 /* ViolationDetailsViewController.swift */,
+				8B5C86502267C1C500FE4DB2 /* RestrictionsViewController.swift */,
+				8B5C86522267CC7200FE4DB2 /* GroupsViewController.swift */,
+				8B5C86562267D3C400FE4DB2 /* RestrictionDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -143,7 +188,7 @@
 		8B9EB33321B18922003210CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8BB9410A21A48CD1001F01E2 /* Main.storyboard */,
+				8B5C86412266781600FE4DB2 /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -155,6 +200,9 @@
 				8B9EB33A21B19637003210CE /* Networking.swift */,
 				8BE1AEEB2242544300A9420D /* EditService.swift */,
 				8B070ABF225CE83C00B3BE78 /* TripsService.swift */,
+				8B7584D02264A98800DCEB98 /* ViolationService.swift */,
+				8B7584D22264A99900DCEB98 /* RestrictionService.swift */,
+				8B5C865A2269E34800FE4DB2 /* GroupService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -173,6 +221,9 @@
 			children = (
 				8B9EB33C21B1988C003210CE /* Driver.swift */,
 				8B77DB032245982100728801 /* Trips.swift */,
+				8B7584CC2264A69F00DCEB98 /* Violation.swift */,
+				8B7584CE2264A82500DCEB98 /* Restriction.swift */,
+				8B5C86542267CE3900FE4DB2 /* Group.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,14 +328,20 @@
 				8BB9411121A48CD4001F01E2 /* LaunchScreen.storyboard in Resources */,
 				8B187499225E3F5100DCC43C /* 57390193_2543763952319586_4319025795826712576_n.png in Resources */,
 				8B26F44221F37F9F0011E7AC /* GoogleService-Info.plist in Resources */,
+				8B5C86492267522900FE4DB2 /* no.png in Resources */,
+				8B5C86432266781600FE4DB2 /* Main.storyboard in Resources */,
 				8B535FA3225CDC8100D7353D /* route.png in Resources */,
-				8B18749D225EB08000DCC43C /* home_01.jpg in Resources */,
+				8B70F4AE227113DB0089615E /* speedLimit.png in Resources */,
 				8BE1AEE8224010B000A9420D /* profileIcon.png in Resources */,
+				8B5C864B226752AB00FE4DB2 /* noicon.png in Resources */,
+				8B5C864F2267C17A00FE4DB2 /* geofences.png in Resources */,
+				8B5C86452266959500FE4DB2 /* d5b0ad849d.png in Resources */,
 				8BB9410E21A48CD4001F01E2 /* Assets.xcassets in Resources */,
 				8B1874A3225F96D100DCC43C /* violation.png in Resources */,
+				8B5C86472266962B00FE4DB2 /* warning1.png in Resources */,
 				8B0654402260C1E700E10559 /* tripsdetails.png in Resources */,
 				8BE1AEE6224010B000A9420D /* profileAvatar.png in Resources */,
-				8BB9410C21A48CD1001F01E2 /* Main.storyboard in Resources */,
+				8B5C86592269300C00FE4DB2 /* pnggeo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +358,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DriverTracker/Pods-DriverTracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BRYXBanner/BRYXBanner.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSpinner/SwiftSpinner.framework",
@@ -312,6 +370,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BRYXBanner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSpinner.framework",
@@ -353,31 +412,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B070AC0225CE83C00B3BE78 /* TripsService.swift in Sources */,
+				8B5C86512267C1C500FE4DB2 /* RestrictionsViewController.swift in Sources */,
 				8B20021822428C7800F766C1 /* PasswordEditViewController.swift in Sources */,
+				8B5C86552267CE3900FE4DB2 /* Group.swift in Sources */,
 				8B11C21521B8593600AC5D12 /* LoginViewController.swift in Sources */,
 				8BB9410921A48CD1001F01E2 /* ViewController.swift in Sources */,
+				8B7584CF2264A82500DCEB98 /* Restriction.swift in Sources */,
 				8BE1AEEC2242544300A9420D /* EditService.swift in Sources */,
+				8B7584D52264B27F00DCEB98 /* ViolationViewController.swift in Sources */,
+				8B7584D12264A98800DCEB98 /* ViolationService.swift in Sources */,
+				8B5C865B2269E34800FE4DB2 /* GroupService.swift in Sources */,
 				8B9EB33B21B19637003210CE /* Networking.swift in Sources */,
 				8B9EB33721B18AB1003210CE /* Singleton.swift in Sources */,
 				8B535FA5225CDDFF00D7353D /* TripsViewController.swift in Sources */,
 				8B77DB042245982100728801 /* Trips.swift in Sources */,
+				8B7584CD2264A69F00DCEB98 /* Violation.swift in Sources */,
 				8B187497225E2FB500DCC43C /* TripsDetailsViewController.swift in Sources */,
 				8B9EB33D21B1988C003210CE /* Driver.swift in Sources */,
+				8B7584D32264A99900DCEB98 /* RestrictionService.swift in Sources */,
+				8B5C86572267D3C400FE4DB2 /* RestrictionDetailsViewController.swift in Sources */,
 				8BB9410721A48CD1001F01E2 /* AppDelegate.swift in Sources */,
 				8BE1AEE2224005AD00A9420D /* ProfileViewController.swift in Sources */,
 				8BE1AEEE22425B5000A9420D /* EditProfileViewController.swift in Sources */,
+				8B5C86532267CC7200FE4DB2 /* GroupsViewController.swift in Sources */,
 				8B9EB33921B195DD003210CE /* DriverService.swift in Sources */,
 				8B1874A5225F96F700DCC43C /* MapViewController.swift in Sources */,
+				8B7584D92264B6BE00DCEB98 /* ViolationDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8BB9410A21A48CD1001F01E2 /* Main.storyboard */ = {
+		8B5C86412266781600FE4DB2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8BB9410B21A48CD1001F01E2 /* Base */,
+				8B5C86422266781600FE4DB2 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

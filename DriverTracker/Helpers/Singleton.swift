@@ -10,8 +10,9 @@
 import Foundation
 class Singleton {
     static let sharedInstance = Singleton()
-    let serverBasePath = "http://192.168.1.3:8000/api"
+    let serverBasePath = "http://192.168.1.5:8000/api"
     var loggedInDriver: Driver!
+    var flag : Int!
 
 
     private init(){}

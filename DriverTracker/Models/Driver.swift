@@ -17,10 +17,11 @@ class Driver: Decodable {
     var phone: String
     var address: String
     var email: String
-    
-   init(id: Int, user_name: String, first_name: String,last_name: String, email: String , phone: String, address: String) {
+    var driver_id: Int
 
+   init(id: Int,driver_id: Int, user_name: String, first_name: String,last_name: String, email: String , phone: String, address: String) {
 
+        self.driver_id = driver_id
         self.user_name = user_name
         //self.name=name
         self.first_name = first_name
@@ -30,4 +31,7 @@ class Driver: Decodable {
         self.address = address
         self.id = id
     }
+    
+
+
 }

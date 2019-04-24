@@ -26,6 +26,7 @@ class EditProfileViewController: UIViewController {
 
 
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
         usernametxt.text=Singleton.sharedInstance.loggedInDriver!.user_name
         firstnametxt.text=Singleton.sharedInstance.loggedInDriver!.first_name
         lastnametxt.text=Singleton.sharedInstance.loggedInDriver!.last_name
@@ -42,11 +43,8 @@ class EditProfileViewController: UIViewController {
         Networking.sharetInstance.updateprofile(id: Singleton.sharedInstance.loggedInDriver!.id, username: usernametxt.text!, firstname: firstnametxt.text!, lastname: lastnametxt.text!, email: emailtxt.text!, address: addresstxt.text!, phone: phonetxt.text!) { (valid, msg) in
             SwiftSpinner.hide()
             if valid{
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                //let destinationVc = storyboard.instantiateViewController(withIdentifier: "tabController")
-                
-                let destinationVc = storyboard.instantiateViewController(withIdentifier: "profilepage")
-                self.present(destinationVc, animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+
             }else{
                 SCLAlertView().showError("Error", subTitle: msg)
             }

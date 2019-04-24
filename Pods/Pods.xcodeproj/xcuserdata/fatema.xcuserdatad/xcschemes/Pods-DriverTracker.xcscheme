@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0E5DB9C8FF56E877EDA8ECB2DEA2A800"
+               BlueprintIdentifier = "7A97262F9292712DAF415DE6632F8CF2"
                BuildableName = "Pods_DriverTracker.framework"
                BlueprintName = "Pods-DriverTracker"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0E5DB9C8FF56E877EDA8ECB2DEA2A800"
+            BlueprintIdentifier = "7A97262F9292712DAF415DE6632F8CF2"
             BuildableName = "Pods_DriverTracker.framework"
             BlueprintName = "Pods-DriverTracker"
             ReferencedContainer = "container:Pods.xcodeproj">

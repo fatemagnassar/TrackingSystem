@@ -11,17 +11,24 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var profiletbl: UITableView!
     @IBOutlet weak var profilePicIcon: UIImageView!
-    let infolbl = ["Username","First name", "Last name", "Email" , "Phone" ,"Address"]
-    let driverinfo = [Singleton.sharedInstance.loggedInDriver!.user_name,Singleton.sharedInstance.loggedInDriver!.first_name, Singleton.sharedInstance.loggedInDriver!.last_name, Singleton.sharedInstance.loggedInDriver!.email,Singleton.sharedInstance.loggedInDriver!.phone,Singleton.sharedInstance.loggedInDriver!.address]
+    var infolbl: [String]!
+    var driverinfo: [String]!
 
-    
     
     @IBAction func logOut(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "loggedIn")
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        infolbl = ["Username","First name", "Last name", "Email" , "Phone" ,"Address"]
+        driverinfo = [Singleton.sharedInstance.loggedInDriver!.user_name,Singleton.sharedInstance.loggedInDriver!.first_name, Singleton.sharedInstance.loggedInDriver!.last_name, Singleton.sharedInstance.loggedInDriver!.email,Singleton.sharedInstance.loggedInDriver!.phone,Singleton.sharedInstance.loggedInDriver!.address]
+        profiletbl.reloadData()
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        infolbl = ["Username","First name", "Last name", "Email" , "Phone" ,"Address"]
+        driverinfo = [Singleton.sharedInstance.loggedInDriver!.user_name,Singleton.sharedInstance.loggedInDriver!.first_name, Singleton.sharedInstance.loggedInDriver!.last_name, Singleton.sharedInstance.loggedInDriver!.email,Singleton.sharedInstance.loggedInDriver!.phone,Singleton.sharedInstance.loggedInDriver!.address]
         profiletbl.reloadData()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

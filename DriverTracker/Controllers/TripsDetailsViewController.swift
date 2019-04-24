@@ -30,16 +30,20 @@ class TripsDetailsViewController: UIViewController , UITableViewDelegate, UITabl
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tripinfo = [tripSelected.vehicle_name,tripSelected.date_time,tripSelected.estimated_time,tripSelected.destination_city_name , "Address",tripSelected.state]
-        infolbl = ["Vehicle License","Date-Time","Estimated Arrival", "City" ,"Address" ,"State"]
+        tripinfo = [tripSelected.trip_name,tripSelected.vehicle_name,tripSelected.date_time,tripSelected.estimated_time,tripSelected.destination_city_name , tripSelected.to_address,tripSelected.from_address,tripSelected.state]
+        infolbl = ["Trip Name","Vehicle License","Date-Time"," Arrival Time", "City" ,"Source Address","Destination Address" ,"State"]
         tripstbl.reloadData()
-        if tripSelected.state != TripState.notStarted.rawValue {
+        if tripSelected.state != TripState.notStarted.rawValue || Singleton.sharedInstance.flag==1 {
             startTripBtn.isHidden = true
+        }
+        else
+        {
+            startTripBtn.isHidden = false
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

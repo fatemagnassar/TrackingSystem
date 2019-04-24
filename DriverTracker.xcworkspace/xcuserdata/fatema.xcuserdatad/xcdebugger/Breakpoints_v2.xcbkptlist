@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DriverTracker/Controllers/EditProfileViewController.swift"
-            timestampString = "576687995.658566"
+            timestampString = "577527986.767921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "EditProfileViewController"
             landmarkType = "3">
          </BreakpointContent>
