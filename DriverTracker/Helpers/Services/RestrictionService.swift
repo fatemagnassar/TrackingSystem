@@ -8,6 +8,8 @@
 
 import Foundation
 import Alamofire
+import MapKit
+
 extension Networking{
     
     func retrieveRestrictions(id:Int, completed: @escaping (_ valid:Bool, _ msg:String, _ restrictions:[Restriction])->()) {
@@ -35,6 +37,34 @@ extension Networking{
                     }
                 }
                 completed(true, "Retrieved Data Successfully", restricions)
+            }
+        }
+    }
+    
+    func retrieveGeofences(id:Int, completed: @escaping (_ valid:Bool, _ msg:String, _ geofences:[Geofence])->()){
+        let url = "\(Singleton.sharedInstance.serverBasePath)/restrictions"
+        let parameters: Parameters = [
+            "trip_id": id ,
+        ]
+        let headers: HTTPHeaders = [
+            "Accept": "application/json"
+        ]
+        Alamofire.request(url, method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+            guard let repsonseDict = response.result.value as? [String: Any] else { return }
+            guard let valid = repsonseDict["valid"] as? Bool else { return }
+            if valid {
+                guard let geoFencesArr = repsonseDict["data"] as? [[String : Any]] else { return }
+                var geofences: [Geofence] = [Geofence]()
+                for geofence in geoFencesArr {
+                    let points = geofence["points"] as! [[Double]]
+                    var geoFencePoints: [CLLocationCoordinate2D] = []
+                    for point in points {
+                        let coordinate = CLLocationCoordinate2DMake(point.first!,  point.last!)
+                        geoFencePoints.append(coordinate)
+                    }
+                    geofences.append(Geofence(points: geoFencePoints, type: .polygon, radius: 0, center: CLLocationCoordinate2DMake(0,0)))
+                }
+                completed(true, "Retrieved Data Successfully", geofences)
             }
         }
     }

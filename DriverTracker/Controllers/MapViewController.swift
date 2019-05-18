@@ -20,22 +20,7 @@ enum GeofenceType {
     case polygon
     case circle
 }
-struct Geofence {
-    var points: [CLLocationCoordinate2D]
-    var type: GeofenceType
-    var radius: CLLocationDistance
-    var center: CLLocationCoordinate2D
-    
-    static func loadDummyGeofences() -> [Geofence] {
-        let poly = Geofence(points: [CLLocationCoordinate2DMake(49.142677,  -123.135139),CLLocationCoordinate2DMake(49.142730, -123.125794),CLLocationCoordinate2DMake(49.140874, -123.125805),CLLocationCoordinate2DMake(49.140885, -123.135214)], type: .polygon, radius: 0, center: CLLocationCoordinate2DMake(0,0))
 
-        let line = Geofence(points: [CLLocationCoordinate2DMake(49.142677,  -123.135139),CLLocationCoordinate2DMake(49.142730, -123.125794),CLLocationCoordinate2DMake(49.140874, -123.125805)], type: .line, radius: 0, center: CLLocationCoordinate2DMake(0,0))
-        
-        let circle = Geofence(points: [], type: .circle, radius: CLLocationDistance(exactly: 1000)!, center: CLLocationCoordinate2DMake(49.142677,  -123.135139))
-        
-        return [poly, line, circle]
-    }
-}
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     var tripSelected: Trips!
     var banner : Banner?
@@ -44,18 +29,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var maxSpeedLabel: UILabel!
     var locationManager: CLLocationManager!
     var currentLocation: CLLocationCoordinate2D!
-    var geofences: [Geofence] = Geofence.loadDummyGeofences()
+    var geofences: [Geofence] = []
+    var inGeofence = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLocation()
-        mapSetup()
-        for geofence in geofences {
-            if geofence.type == .circle {
-                addCircle(center: geofence.center, radius: geofence.radius)
-            } else {
-                addOverLay(points: geofence.points)
+        Networking.sharetInstance.retrieveGeofences(id: tripSelected.id) { (valid, msg, geofences) in
+            self.geofences = geofences
+            for geofence in geofences {
+                if geofence.type == .circle {
+                    self.addCircle(center: geofence.center, radius: geofence.radius)
+                } else {
+                    self.addOverLay(points: geofence.points)
+                }
             }
         }
+        setupLocation()
+        mapSetup()
         maxSpeedLabel.text = "100"
         ref = Database.database().reference()
         let annotationdest = MKPointAnnotation()
@@ -97,30 +86,37 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         print(locations[0].coordinate)
         currentLocation = locations[0].coordinate
         var violation = false
-        for geofence in geofences {
-            if geofence.type == .circle {
-                let circleRenderer = MKCircleRenderer(circle: MKCircle(center: geofence.center, radius: geofence.radius))
-                let mapPoint: MKMapPoint = MKMapPoint(currentLocation)
-                let circleViewPoint: CGPoint = circleRenderer.point(for: mapPoint)
-                if circleRenderer.path.contains(circleViewPoint) {
-                   showBanner()
-                    violation = true
-                }
-            } else {
-                let polygonRenderer = MKPolygonRenderer(polygon: MKPolygon(coordinates: geofence.points, count: geofence.points.count))
-                let mapPoint: MKMapPoint = MKMapPoint(currentLocation)
-                let polygonViewPoint: CGPoint = polygonRenderer.point(for: mapPoint)
-                if polygonRenderer.path.contains(polygonViewPoint) {
-                    showBanner()
-                    violation = true
+        if !inGeofence {
+            inGeofence = true
+            //TODO report violation to backend
+            for geofence in geofences {
+                if geofence.type == .circle {
+                    let circleRenderer = MKCircleRenderer(circle: MKCircle(center: geofence.center, radius: geofence.radius))
+                    let mapPoint: MKMapPoint = MKMapPoint(currentLocation)
+                    let circleViewPoint: CGPoint = circleRenderer.point(for: mapPoint)
+                    if circleRenderer.path.contains(circleViewPoint) {
+                        showBanner()
+                        violation = true
+                    }
+                } else {
+                    if geofence.points.count > 2 {
+                        let polygonRenderer = MKPolygonRenderer(polygon: MKPolygon(coordinates: geofence.points, count: geofence.points.count))
+                        let mapPoint: MKMapPoint = MKMapPoint(currentLocation)
+                        let polygonViewPoint: CGPoint = polygonRenderer.point(for: mapPoint)
+                        if polygonRenderer.path.contains(polygonViewPoint) {
+                            showBanner()
+                            violation = true
+                        }
+                    }
                 }
             }
+            if !violation {
+                inGeofence = false
+                hideBanner()
+            }
         }
-        if !violation {
-            hideBanner()
-        }
-//        self.ref.child("users").child(Singleton.sharedInstance.loggedInDriver.first_name).setValue(["Name":
-//            Singleton.sharedInstance.loggedInDriver.first_name,"lat":currentLocation.latitude,"lon":currentLocation.longitude])]
+        self.ref.child("users").child(Singleton.sharedInstance.loggedInDriver.first_name).setValue(["Name":
+            Singleton.sharedInstance.loggedInDriver.first_name,"lat":currentLocation.latitude,"lon":currentLocation.longitude])
     }
     
     func showBanner() {

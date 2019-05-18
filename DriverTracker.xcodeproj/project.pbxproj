@@ -55,6 +55,7 @@
 		8BE1AEEC2242544300A9420D /* EditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE1AEEB2242544300A9420D /* EditService.swift */; };
 		8BE1AEEE22425B5000A9420D /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE1AEED22425B5000A9420D /* EditProfileViewController.swift */; };
 		D786A7F5F2ACD7F6A0BE61BD /* Pods_DriverTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A844A9C5B39E954576A9659 /* Pods_DriverTracker.framework */; };
+		EAACDF6E229037140026E8E1 /* Geofence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAACDF6D229037140026E8E1 /* Geofence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,7 @@
 		8BE1AEEB2242544300A9420D /* EditService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditService.swift; sourceTree = "<group>"; };
 		8BE1AEED22425B5000A9420D /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		E658563AE3FC589765FC6566 /* Pods-DriverTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DriverTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-DriverTracker/Pods-DriverTracker.release.xcconfig"; sourceTree = "<group>"; };
+		EAACDF6D229037140026E8E1 /* Geofence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geofence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 				8B7584CC2264A69F00DCEB98 /* Violation.swift */,
 				8B7584CE2264A82500DCEB98 /* Restriction.swift */,
 				8B5C86542267CE3900FE4DB2 /* Group.swift */,
+				EAACDF6D229037140026E8E1 /* Geofence.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				8B5C865B2269E34800FE4DB2 /* GroupService.swift in Sources */,
 				8B9EB33B21B19637003210CE /* Networking.swift in Sources */,
 				8B9EB33721B18AB1003210CE /* Singleton.swift in Sources */,
+				EAACDF6E229037140026E8E1 /* Geofence.swift in Sources */,
 				8B535FA5225CDDFF00D7353D /* TripsViewController.swift in Sources */,
 				8B77DB042245982100728801 /* Trips.swift in Sources */,
 				8B7584CD2264A69F00DCEB98 /* Violation.swift in Sources */,
