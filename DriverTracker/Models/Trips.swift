@@ -32,6 +32,18 @@ class Trips: Decodable{
     var destination_city_id : Int
     var trip_name : String
     
+    
+    func updateState() {
+        if state=="notstarted"
+        {self.state = "Not Started"}
+        else if state=="completed"{
+            self.state = "Completed"}
+        else if state=="notStarted"{
+            self.state = "Not Started"}
+        else if state=="finished"{
+            self.state = "Finished"}
+    }
+    
 
     init(id: Int, start_lat: String,start_long: String, end_lat: String,end_long: String, state: String , date_time: String, estimated_time: String ,to_address:String ,from_address:String , vehicle_name : String ,region_name : String , city_name : String ,destination_region_name : String , destination_city_name : String , driver_id : Int,vehicle_id : Int ,region_id : Int ,city_id : Int,destination_region_id : Int,destination_city_id : Int,trip_name:String) {
     //init(id: Int, start_lat: String,start_long: String, end_lat: String,end_long: String, state: String , date_time: String, estimated_time: String  , vehicle_name : String ,region_name : String , city_name : String ,destination_region_name : String , destination_city_name : String , driver_id : Int,vehicle_id : Int ,region_id : Int ,city_id : intmax_t,destination_region_id : Int,destination_city_id : Int) {

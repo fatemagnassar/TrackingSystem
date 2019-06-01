@@ -13,4 +13,5 @@ pod 'SwiftSpinner'
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'BRYXBanner'
+pod 'IQKeyboardManagerSwift'
 end

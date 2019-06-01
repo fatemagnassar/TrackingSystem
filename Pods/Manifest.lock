@@ -51,6 +51,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.6):
     - GoogleUtilities/Logger
+  - IQKeyboardManagerSwift (6.2.1)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -65,11 +66,12 @@ DEPENDENCIES:
   - BRYXBanner
   - Firebase/Core
   - Firebase/Database
+  - IQKeyboardManagerSwift
   - SCLAlertView
   - SwiftSpinner
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - BRYXBanner
     - Firebase
@@ -79,6 +81,7 @@ SPEC REPOS:
     - FirebaseInstanceID
     - GoogleAppMeasurement
     - GoogleUtilities
+    - IQKeyboardManagerSwift
     - leveldb-library
     - nanopb
     - SCLAlertView
@@ -94,11 +97,12 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
   GoogleAppMeasurement: 5029d78f2b438bd30ffb44e6c558b57c21622727
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
+  IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
 
-PODFILE CHECKSUM: 3931529adc24fcf7cfc82e7aee8db0f841061ffd
+PODFILE CHECKSUM: 0f050e9831dff2faffb2a5652ec82d7ca266f3cf
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.0

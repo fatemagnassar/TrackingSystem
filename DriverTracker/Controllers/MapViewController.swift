@@ -45,15 +45,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         setupLocation()
         mapSetup()
-        maxSpeedLabel.text = "100"
+        maxSpeedLabel.text = "60"
         ref = Database.database().reference()
         let annotationdest = MKPointAnnotation()
         annotationdest.title = "Your Destination"
-        //annotationdest.coordinate = CLLocationCoordinate2D(latitude: Double( tripSelected.end_lat)!, longitude:Double(tripSelected.end_long)!)
+        annotationdest.coordinate = CLLocationCoordinate2D(latitude: Double( tripSelected.end_lat)!, longitude:Double(tripSelected.end_long)!)
         myMap.addAnnotation(annotationdest)
         let annotationstart = MKPointAnnotation()
         annotationstart.title = "Your Pickup"
-        //annotationstart.coordinate = CLLocationCoordinate2D(latitude: Double( tripSelected.start_lat)!, longitude:Double(tripSelected.start_long)!)
+        annotationstart.coordinate = CLLocationCoordinate2D(latitude: Double( tripSelected.start_lat)!, longitude:Double(tripSelected.start_long)!)
         myMap.addAnnotation(annotationstart)
     }
     
@@ -81,9 +81,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations[0].coordinate)
+        //print(locations[0].coordinate)
         centerMapOnLocation(location: locations[0])
-        print(locations[0].coordinate)
+        //print(locations[0].coordinate)
         currentLocation = locations[0].coordinate
         var violation = false
         if !inGeofence {
@@ -95,7 +95,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     let mapPoint: MKMapPoint = MKMapPoint(currentLocation)
                     let circleViewPoint: CGPoint = circleRenderer.point(for: mapPoint)
                     if circleRenderer.path.contains(circleViewPoint) {
-                        showBanner()
+                        showBanner(msg: "You have entered a restricted area")
                         violation = true
                     }
                 } else {
@@ -104,9 +104,31 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         let mapPoint: MKMapPoint = MKMapPoint(currentLocation)
                         let polygonViewPoint: CGPoint = polygonRenderer.point(for: mapPoint)
                         if polygonRenderer.path.contains(polygonViewPoint) {
-                            showBanner()
-                            violation = true
+                            if geofence.flagSpeed == true{
+                                maxSpeedLabel.text = String(geofence.speedlimit!)
+                                var speed: CLLocationSpeed = CLLocationSpeed()
+                                speed = locationManager.location!.speed
+                                
+                                if speed/1000 >= Double(geofence.speedlimit!)
+                                {
+                                    showBanner(msg : "You have exceeded your speed limit")
+                                    violation = true
+                                    
+                                }
+                                
+                            }
+                            else{
+                                showBanner(msg : "You have entered a restricted area")
+                                violation = true
+                                Networking.sharetInstance.saveViolation(lat: "\(currentLocation?.latitude ?? 0)", long: "\(currentLocation?.longitude ?? 0)", trip_id: tripSelected.id, driver_id: Singleton.sharedInstance.loggedInDriver.driver_id, restriction_id: geofence.id) { (_, _) in
+                                    
+                                }
+                            }
+                            
                         }
+                    }
+                    else {
+                        
                     }
                 }
             }
@@ -114,14 +136,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 inGeofence = false
                 hideBanner()
             }
+            
         }
-        self.ref.child("users").child(Singleton.sharedInstance.loggedInDriver.first_name).setValue(["Name":
-            Singleton.sharedInstance.loggedInDriver.first_name,"lat":currentLocation.latitude,"lon":currentLocation.longitude])
+        self.ref.child("users").child(String(tripSelected.id)).setValue(["username":
+            Singleton.sharedInstance.loggedInDriver.user_name,"lat":currentLocation.latitude,"lon":currentLocation.longitude, "trip_id":String(tripSelected.id)] )
     }
     
-    func showBanner() {
+    func showBanner(msg : String) {
         banner?.dismiss()
-        banner = Banner(title: "Warning", subtitle: "You have entered a restricted area", backgroundColor: UIColor(red:1, green:0, blue:0, alpha:1))
+        banner = Banner(title: "Warning", subtitle: msg, backgroundColor: UIColor(red:1, green:0, blue:0, alpha:1))
         banner?.dismissesOnTap = false
         banner?.show()
     }
@@ -130,9 +153,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         banner?.dismiss()
     }
     
-
+    
     @IBAction func endTrip(_ sender: Any) {
-
+        
         Networking.sharetInstance.updateTripStatus(id: tripSelected.id, status: TripState.finished.rawValue) { (valid, msg) in
             SwiftSpinner.hide()
             if valid{

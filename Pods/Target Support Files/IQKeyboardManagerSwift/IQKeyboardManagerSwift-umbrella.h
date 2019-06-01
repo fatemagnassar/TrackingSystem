@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double ObjectDecoderVersionNumber;
-FOUNDATION_EXPORT const unsigned char ObjectDecoderVersionString[];
+FOUNDATION_EXPORT double IQKeyboardManagerSwiftVersionNumber;
+FOUNDATION_EXPORT const unsigned char IQKeyboardManagerSwiftVersionString[];
 

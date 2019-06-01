@@ -30,6 +30,7 @@ class TripsDetailsViewController: UIViewController , UITableViewDelegate, UITabl
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tripSelected.updateState()
         tripinfo = [tripSelected.trip_name,tripSelected.vehicle_name,tripSelected.date_time,tripSelected.estimated_time,tripSelected.destination_city_name , tripSelected.to_address,tripSelected.from_address,tripSelected.state]
         infolbl = ["Trip Name","Vehicle License","Date-Time"," Arrival Time", "City" ,"Source Address","Destination Address" ,"State"]
         tripstbl.reloadData()
